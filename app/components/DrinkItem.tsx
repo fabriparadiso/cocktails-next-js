@@ -10,6 +10,7 @@ import type { Ingredient } from "../types/ingredient";
 export function DrinkItem(drink: Drink) {
   const pathname: string = usePathname();
   const isDetailPage: boolean = pathname != "/" ? true : false;
+  const MAX_INGREDIENTS = 15;
   return (
     <div className="flex justify-center align-center">
       <Card className="py-4 mx-auto flex">
@@ -23,9 +24,8 @@ export function DrinkItem(drink: Drink) {
             src={drink.strDrinkThumb}
             width={270}
           />
-
-          <article className="ml-4">
-            {drink && isDetailPage && (
+          {isDetailPage ? (
+            <article className="ml-4">
               <div className="flex flex-col">
                 <p className="text-tiny uppercase font-bold">Ingredients</p>
                 {getIngredients(drink, 15).map((ingredient: Ingredient) => {
@@ -36,10 +36,8 @@ export function DrinkItem(drink: Drink) {
                   );
                 })}
               </div>
-            )}
-          </article>
-
-          {!isDetailPage && (
+            </article>
+          ) : (
             <div className="flex flex-col items-start">
               <button className="bg-purple-900 text-white hover:bg-blue-400 font-bold py-2 px-4 mt-3 rounded">
                 <Link href={`/${encodeURIComponent(drink.idDrink)}`}>
