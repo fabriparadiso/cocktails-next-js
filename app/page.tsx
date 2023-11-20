@@ -3,9 +3,6 @@ import React from "react";
 import Search from "./components/Search";
 import { DrinkList } from "./components/DrinkList";
 
-import { useSearchParams } from "next/router";
-import PaginationControls from "./components/PaginationControls";
-
 type HomeProps = {
   searchParams: URLSearchParams;
 };
