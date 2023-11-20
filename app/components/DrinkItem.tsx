@@ -28,13 +28,15 @@ export function DrinkItem(drink: Drink) {
             <article className="ml-4">
               <div className="flex flex-col">
                 <p className="text-tiny uppercase font-bold">Ingredients</p>
-                {getIngredients(drink, 15).map((ingredient: Ingredient) => {
-                  return (
-                    <span key={ingredient.strIngredient}>
-                      {ingredient.strIngredient} ({ingredient.strMeasure})
-                    </span>
-                  );
-                })}
+                {getIngredients(drink, MAX_INGREDIENTS).map(
+                  (ingredient: Ingredient) => {
+                    return (
+                      <span key={ingredient.strIngredient}>
+                        {ingredient.strIngredient} ({ingredient.strMeasure})
+                      </span>
+                    );
+                  }
+                )}
               </div>
             </article>
           ) : (
